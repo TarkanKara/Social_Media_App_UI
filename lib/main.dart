@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'screen/home_screen.dart';
+import 'screen/profile_screen.dart';
+import 'screen/search_screen.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,10 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Social App',
-      //home:
+      initialRoute: "/home",
+      routes: {
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        SearchScreen.routeName: (context) => const SearchScreen(),
+        ProfileScreen.routeName: (context) => const ProfileScreen(),
+      },
     );
   }
 }

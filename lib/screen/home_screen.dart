@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_bottom_app_bar.dart';
 
 class HomeScreen extends StatelessWidget {
+  //page routeName
   static const routeName = "/home";
   const HomeScreen({super.key});
 
