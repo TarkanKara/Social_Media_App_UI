@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:social_media_app/widgets/cutom_video_player.dart';
+
 //Models
 import '../models/post_model.dart';
 //Widgets
 import '../widgets/custom_bottom_app_bar.dart';
+import '../widgets/cutom_video_player.dart';
 
 class HomeScreen extends StatelessWidget {
   //page routeName

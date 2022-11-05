@@ -41,7 +41,6 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    //AspectRatio 9/16 Ekran
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -52,6 +51,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
           }
         });
       },
+      //AspectRatio 9/16 Ekran
       child: AspectRatio(
         aspectRatio: controller.value.aspectRatio,
         child: Stack(
