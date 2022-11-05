@@ -1,10 +1,11 @@
-// ignore_for_file: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import '../models/post_model.dart';
 
 //Packages
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
   final Post pst;
@@ -41,42 +42,54 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          if (controller.value.isPlaying) {
+    return VisibilityDetector(
+      key: Key(controller.dataSource),
+      onVisibilityChanged: (visibilityInfo) {
+        if (visibilityInfo.visibleFraction > 0.5) {
+          controller.play();
+        } else {
+          if (mounted) {
             controller.pause();
-          } else {
-            controller.play();
           }
-        });
+        }
       },
-      //AspectRatio 9/16 Ekran
-      child: AspectRatio(
-        aspectRatio: controller.value.aspectRatio,
-        child: Stack(
-          children: [
-            VideoPlayer(controller),
-            const Positioned.fill(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.black,
-                      Colors.transparent,
-                      Colors.transparent,
-                      Colors.black,
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    stops: [0.0, 0.1, 0.8, 1.0],
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            if (controller.value.isPlaying) {
+              controller.pause();
+            } else {
+              controller.play();
+            }
+          });
+        },
+        //AspectRatio 9/16 Ekran
+        child: AspectRatio(
+          aspectRatio: controller.value.aspectRatio,
+          child: Stack(
+            children: [
+              VideoPlayer(controller),
+              const Positioned.fill(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.black,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.black,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 0.1, 0.8, 1.0],
+                    ),
                   ),
                 ),
               ),
-            ),
-            _buildVideoCaptions(context),
-            _buildVideoActions(context),
-          ],
+              _buildVideoCaptions(context),
+              _buildVideoActions(context),
+            ],
+          ),
         ),
       ),
     );
