@@ -30,16 +30,18 @@ class ProfileScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "@@${userss.username} - ${userss.likes} likes",
+          "@@${userss.username}",
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Colors.red,
+                color: const Color(0xFFFF006E),
                 fontSize: 25,
               ),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [_ProfileInformation(users: userss)],
+          children: [
+            _ProfileInformation(users: userss),
+          ],
         ),
       ),
     );
@@ -69,6 +71,39 @@ class _ProfileInformation extends StatelessWidget {
               _buildUserInfo(context, "Likes", "${users.likes}"),
             ],
           ),
+        ),
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFF006E),
+                fixedSize: const Size(200, 50),
+              ),
+              child: Text(
+                "Follow",
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+              ),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                fixedSize: const Size(60, 50),
+              ),
+              child: const Icon(
+                Icons.arrow_drop_down,
+                color: Colors.black,
+              ),
+            ),
+          ],
         ),
       ],
     );
