@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+//Models
+import '../models/post_model.dart';
 //Widgets
 import '../widgets/custom_bottom_app_bar.dart';
 
@@ -10,11 +11,21 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Post> postss = Post.posts;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: const _CustomAppBar(),
-      body: Container(),
       bottomNavigationBar: const CustomBottomAppBar(),
+      body: SingleChildScrollView(
+        child: ListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          children: postss.map((e) {
+            return Container();
+          }).toList(),
+        ),
+      ),
     );
   }
 }
