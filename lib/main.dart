@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Social App',
       initialRoute: "/home",
       routes: {
-        HomeScreen.routeName: (context) => const HomeScreen(),
-        SearchScreen.routeName: (context) => const SearchScreen(),
-        ProfileScreen.routeName: (context) => const ProfileScreen(),
+        "/home": (context) => const HomeScreen(),
+        "/search": (context) => const SearchScreen(),
+        "/profile": (context) => const ProfileScreen(),
       },
     );
   }
