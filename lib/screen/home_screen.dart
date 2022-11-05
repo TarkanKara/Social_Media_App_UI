@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/widgets/cutom_video_player.dart';
 //Models
 import '../models/post_model.dart';
 //Widgets
@@ -16,13 +17,14 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: const _CustomAppBar(),
       bottomNavigationBar: const CustomBottomAppBar(),
+      extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
         child: ListView(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
-          children: postss.map((e) {
-            return Container();
+          children: postss.map((pstlist) {
+            return CustomVideoPlayer(pst: pstlist);
           }).toList(),
         ),
       ),
