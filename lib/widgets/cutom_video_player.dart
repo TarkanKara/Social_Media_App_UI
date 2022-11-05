@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:social_media_app/screen/profile_screen.dart';
 import '../models/post_model.dart';
 
 //Packages
@@ -130,36 +131,45 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
   }
 
   //Methods
-  Align _buildVideoCaptions(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomLeft,
-      child: Container(
-        height: 125,
-        width: MediaQuery.of(context).size.width * 0.75,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "@@${widget.pst.user.username}",
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Colors.greenAccent,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              widget.pst.caption,
-              maxLines: 2,
-              style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1,
-                  ),
-            ),
-          ],
+  GestureDetector _buildVideoCaptions(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ProfileScreen.routeName,
+          arguments: widget.pst.user,
+        );
+      },
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Container(
+          height: 125,
+          width: MediaQuery.of(context).size.width * 0.75,
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "@@${widget.pst.user.username}",
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: Colors.greenAccent,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                widget.pst.caption,
+                maxLines: 2,
+                style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                    ),
+              ),
+            ],
+          ),
         ),
       ),
     );
