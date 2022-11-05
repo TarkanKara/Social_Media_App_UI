@@ -47,6 +47,23 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
       child: Stack(
         children: [
           VideoPlayer(controller),
+          const Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.black,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  stops: [0.0, 0.1, 0.8, 1.0],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
