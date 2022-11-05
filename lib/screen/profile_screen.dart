@@ -41,8 +41,33 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             _ProfileInformation(users: userss),
+            const SizedBox(height: 10),
+            _ProfileContent(posts: ptss),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _ProfileContent extends StatelessWidget {
+  final List<Post> posts;
+  const _ProfileContent({super.key, required this.posts});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: const [
+          TabBar(
+            indicatorColor: Color(0xFFFF006E),
+            tabs: [
+              Tab(icon: Icon(Icons.grid_view_rounded)),
+              Tab(icon: Icon(Icons.favorite)),
+            ],
+          ),
+        ],
       ),
     );
   }
