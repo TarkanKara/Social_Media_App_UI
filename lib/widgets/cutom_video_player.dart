@@ -74,9 +74,125 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
                 ),
               ),
             ),
+            _buildVideoCaptions(context),
+            _buildVideoActions(context),
           ],
         ),
       ),
+    );
+  }
+
+  //Methods
+  Align _buildVideoActions(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.25,
+        height: controller.value.size.height,
+        padding: const EdgeInsets.only(bottom: 30),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: const [
+            _VideoActions(
+              iconn: Icons.favorite,
+              valuee: "11.4K",
+              colorr: Colors.red,
+            ),
+            SizedBox(height: 10),
+            _VideoActions(
+              iconn: Icons.comment,
+              valuee: "5K",
+              colorr: Colors.green,
+            ),
+            SizedBox(height: 10),
+            _VideoActions(
+              iconn: Icons.forward_rounded,
+              valuee: "100B",
+              colorr: Colors.blue,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  //Methods
+  Align _buildVideoCaptions(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Container(
+        height: 125,
+        width: MediaQuery.of(context).size.width * 0.75,
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "@@${widget.pst.user.username}",
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Colors.greenAccent,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              widget.pst.caption,
+              maxLines: 2,
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                  ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//Widget
+class _VideoActions extends StatelessWidget {
+  final IconData iconn;
+  final String valuee;
+  final Color colorr;
+
+  const _VideoActions({
+    Key? key,
+    required this.iconn,
+    required this.valuee,
+    required this.colorr,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Material(
+          color: Colors.transparent,
+          child: Ink(
+            decoration: ShapeDecoration(
+              color: colorr,
+              shape: const CircleBorder(),
+            ),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(iconn),
+              color: Colors.white,
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          valuee,
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+      ],
     );
   }
 }
