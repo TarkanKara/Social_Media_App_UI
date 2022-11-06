@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:social_media_app/widgets/custom_bottom_app_bar.dart';
 import 'package:social_media_app/widgets/cutom_video_player_preview.dart';
 
 import '../models/post_model.dart';
@@ -38,6 +39,7 @@ class ProfileScreen extends StatelessWidget {
               ),
         ),
       ),
+      bottomNavigationBar: const CustomBottomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
