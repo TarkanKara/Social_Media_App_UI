@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable, unused_element
 
 import 'package:flutter/material.dart';
+import 'package:social_media_app/widgets/cutom_video_player_preview.dart';
 
 import '../models/post_model.dart';
 import '../models/user_model.dart';
@@ -59,13 +60,39 @@ class _ProfileContent extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Column(
-        children: const [
-          TabBar(
+        children: [
+          const TabBar(
             indicatorColor: Color(0xFFFF006E),
             tabs: [
               Tab(icon: Icon(Icons.grid_view_rounded)),
               Tab(icon: Icon(Icons.favorite)),
             ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: TabBarView(
+              children: [
+                //First Tab
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: posts.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 9 / 16,
+                  ),
+                  itemBuilder: (context, index) {
+                    return CustomVideoPlayerPreview(
+                      pst: posts[index],
+                    );
+                  },
+                ),
+                //Second Tab
+                const Icon(
+                  Icons.favorite,
+                  color: Colors.white,
+                ),
+              ],
+            ),
           ),
         ],
       ),
