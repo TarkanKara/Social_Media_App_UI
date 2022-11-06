@@ -66,5 +66,21 @@ class Post {
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
       videoPath: "assets/videos/6.play.mp4",
     ),
+    Post(
+      user: User.users[0],
+      id: "7",
+      type: PostType.video,
+      caption:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      videoPath: "assets/videos/3.play.mp4",
+    ),
+    Post(
+      user: User.users[0],
+      id: "8",
+      type: PostType.video,
+      caption:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      videoPath: "assets/videos/5.play.mp4",
+    ),
   ];
 }
