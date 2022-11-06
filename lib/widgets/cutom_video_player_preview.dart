@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_media_app/widgets/cutom_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 import '../models/post_model.dart';
@@ -44,6 +45,14 @@ class _CustomVideoPlayerPreviewState extends State<CustomVideoPlayerPreview> {
           }
         });
       },
+      onDoubleTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CustomVideoPlayer(pst: widget.pst),
+          ),
+        );
+      },
       child: AspectRatio(
         aspectRatio: controller.value.aspectRatio,
         child: Stack(
@@ -63,6 +72,28 @@ class _CustomVideoPlayerPreviewState extends State<CustomVideoPlayerPreview> {
                     stops: const [0.0, 0.9, 1.0],
                   ),
                 ),
+              ),
+            ),
+            Positioned(
+              left: 10,
+              bottom: 10,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.play_arrow,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: 5),
+                  Text(
+                    "1.4K",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2,
+                        ),
+                  ),
+                ],
               ),
             ),
           ],
